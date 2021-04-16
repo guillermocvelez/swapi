@@ -1,4 +1,5 @@
 <template>
+  <div>
   <main class="main-container">
     <div
       class="character-card"
@@ -14,10 +15,11 @@
           <h3>Id:</h3>
           <h5>{{ idx + 1 }}</h5>
         </div>
-        <div class="img">
-          <img src="" alt="" />
+        <div class="img">          
+          <img class="avatar-img" v-bind:src="`https://ui-avatars.com/api/?name=${a.name}`" alt="" />
         </div>
       </div>
+
       <div class="main-deatil__link">
         <router-link
           class="link"
@@ -26,12 +28,27 @@
         >
       </div>
     </div>
+
   </main>
+  <div class="buttons">
+
+    <button>Anterior</button>
+    <button v-on:click="getPage()"> Siguiente </button>
+    </div> 
+  </div>
 </template>
 
 <script>
+import api from '@/api';
 export default {
+  
   name: "pxCharacters",
+
+  data(){
+    return{
+      page: 1,
+    }
+  },
 
   props: {
     characters: {
@@ -39,12 +56,18 @@ export default {
       default: () => [],
     },
   },
+
+  methods: {
+    getPage(pg){
+      api.getPages(pg).then(page => this.page= page);
+    }
+  }
 };
 </script>
 
 <style scoped>
 .main-container {
-  width: 80%;
+  width: 100%;
   display: grid;
   justify-content: center;
   grid-template-columns: repeat(3, 1fr);
@@ -67,8 +90,13 @@ h5 {
   border-radius: 16px;
   box-shadow: var(--shadow);
 }
-.main-charaner__details {
+.main-character__detail {
   display: flex;
+  justify-content: space-between;  
+}
+.avatar-img{
+  width: 100px;
+border-radius: 50%;
 }
 .main-deatil__link {
   padding: 8px;
@@ -88,4 +116,23 @@ h5 {
   background-color: var(--light-green);
   color: var(--light);
 }
+
+.buttons{
+  margin:0 auto;
+  display:flex;
+  justify-content: space-between;
+  margin-top: 32px;
+  margin-bottom:64px;
+  width: 100%;
+  
+}
+
+button{
+  padding:8px 16px;
+  background-color: var(--main-black);
+  color:var(--light);
+  border:none;
+  border-radius: 8px;
+}
+
 </style>

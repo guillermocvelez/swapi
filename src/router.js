@@ -7,6 +7,7 @@ import Home from "@/views/Home";
 import About from "@/views/About";
 import Error from "@/views/Error";
 import Character from "@/views/Character";
+import Page from "@/views/Page"
 
 //Le decimos a Vue que use Router
 Vue.use(Router);
@@ -32,6 +33,11 @@ export default new Router({
       path: "/character/:id",
       name: "character",
       component: Character,
+    },
+    {
+      path: "/p/:pg",
+      name: "page",
+      component: Page
     },
     {
       path: "*",

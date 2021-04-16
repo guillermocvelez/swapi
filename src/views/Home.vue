@@ -1,6 +1,9 @@
 <template>
   <div class="container">
     <px-characters v-bind:characters="characters"></px-characters>
+
+    
+   
   </div>
 </template>
 
@@ -32,6 +35,10 @@ export default {
 <style scoped>
 .container {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 32px;
 }
+
+
 </style>

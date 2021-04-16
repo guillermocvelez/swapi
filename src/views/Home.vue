@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import api from '@/api';
+import api from "@/api";
 import PxCharacters from "@/components/PxCharacters";
 export default {
   name: "Home",
@@ -14,26 +14,24 @@ export default {
     PxCharacters,
   },
 
-  data(){
-      return{
-          characters: [],
-          page: 1,
-          pages: 9,
-      }
+  data() {
+    return {
+      characters: [],
+      page: 1,
+      pages: 9,
+    };
   },
 
-  //Se ejecuta cuando se crea el componente  
-  created(){
-      api.getCharacters()
-        .then(characters => this.characters = characters)
-  }
+  //Se ejecuta cuando se crea el componente
+  created() {
+    api.getCharacters().then((characters) => (this.characters = characters));
+  },
 };
 </script>
 
 <style scoped>
-    .container{
-        display: flex;
-        justify-content: center;
-    }
-    
+.container {
+  display: flex;
+  justify-content: center;
+}
 </style>

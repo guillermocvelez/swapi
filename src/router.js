@@ -5,8 +5,8 @@ import Router from "vue-router";
 //Importamos todas las vistas que van en la implementación del router
 import Home from "@/views/Home";
 import About from "@/views/About";
-import Character from "@/views/Character"
-
+import Error from "@/views/Error";
+import Character from "@/views/Character";
 
 //Le decimos a Vue que use Router
 Vue.use(Router);
@@ -28,13 +28,15 @@ export default new Router({
       name: "about",
       component: About,
     },
-
     {
-        path: "/character/:id",
-        name: "character",
-        component: Character
+      path: "/character/:id",
+      name: "character",
+      component: Character,
     },
-    
-    
+    {
+      path: "*",
+      name: "error",
+      component: Error,
+    },
   ],
 });

@@ -18,26 +18,25 @@ export default {
 </script>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap");
 
-:root{
+:root {
   --main-black: #0d0d0d;
   --main-gray: #b8bebf;
   --dark-green: #253b40;
   --light: #f0f1f2;
   --light-green: #4f6573;
-  --shadow: 3px 3px 4px rgba(0,0,0,0.3);
+  --shadow: 3px 3px 4px rgba(0, 0, 0, 0.3);
 }
 
 * {
   margin: 0;
   padding: 0;
-  font-family: 'Lato', sans-serif;
-  text-decoration: none;  
-  
+  font-family: "Lato", sans-serif;
+  text-decoration: none;
 }
 
-body{
+body {
   background-color: var(--light);
 }
 

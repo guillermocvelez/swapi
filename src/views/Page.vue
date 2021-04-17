@@ -1,26 +1,19 @@
 <template>
-    <h1>Hola Mundo</h1>
+  <h1>Hola Mundo</h1>
 </template>
-
 
 <script>
 export default {
-    name: "Page",
+  name: "Page",
 
-    data(){
-        return{
-            pages: [],
-        }
-    },
+  data() {
+    return {
+      pages: [],
+    };
+  },
 
+  created() {},
 
-    created(){
-        
-    },
-
-    methods:{
-
-    }
-
-}
+  methods: {},
+};
 </script>

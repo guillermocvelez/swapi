@@ -2,8 +2,20 @@
   <div class="container">
     <px-characters v-bind:characters="characters"></px-characters>
 
-    
-   
+    <div class="buttons">
+      <button
+        v-bind:class="prevPage == null ? 'disabled' : ''"
+        v-on:click="getPrevPage"
+      >
+        Anterior
+      </button>
+      <button
+        v-bind:class="nextPage == null ? 'disabled' : ''"
+        v-on:click="getNextPage"
+      >
+        Siguiente
+      </button>
+    </div>
   </div>
 </template>
 
@@ -21,13 +33,38 @@ export default {
     return {
       characters: [],
       page: 1,
-      pages: 9,
+      prevPage: "",
+      nextPage: "",
     };
   },
 
   //Se ejecuta cuando se crea el componente
   created() {
     api.getCharacters().then((characters) => (this.characters = characters));
+    api.getPages().then((nextPage) => (this.nextPage = nextPage));
+    api.getPrevPage().then((prevPage) => (this.prevPage = prevPage));
+  },
+
+  methods: {
+    getNextPage() {
+      api
+        .getNextPageChars(this.nextPage)
+        .then((characters) => (this.characters = characters));
+      this.prevPage = this.nextPage;
+      api
+        .getNextPageUrl(this.nextPage)
+        .then((nextPage) => (this.nextPage = nextPage));
+    },
+
+    getPrevPage() {
+      api
+        .getNextPageChars(this.prevPage)
+        .then((characters) => (this.characters = characters));
+      this.nextPage = this.prevPage;
+      api
+        .getPrevtPageUrl(this.prevPage)
+        .then((prevPage) => (this.prevPage = prevPage));
+    },
   },
 };
 </script>
@@ -40,5 +77,26 @@ export default {
   margin-bottom: 32px;
 }
 
+.buttons {
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 32px;
+  margin-bottom: 64px;
+  width: 30%;
+}
 
+button {
+  padding: 8px 16px;
+  background-color: var(--main-black);
+  color: var(--light);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.disabled {
+  background-color: gainsboro;
+  cursor: not-allowed;
+}
 </style>

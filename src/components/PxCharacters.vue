@@ -1,53 +1,50 @@
 <template>
   <div>
-  <main class="main-container">
-    <div
-      class="character-card"
-      v-for="(a, idx) in characters"
-      v-bind:key="a[idx]"
-    >
-      <div class="main-character__detail">
-        <div class="details">
-          <h3>Nombre:</h3>
-          <h5>{{ a.name }}</h5>
-          <h3>Género:</h3>
-          <h5>{{ a.gender }}</h5>
-          <h3>Id:</h3>
-          <h5>{{ idx + 1 }}</h5>
+    <main class="main-container">
+      <div
+        class="character-card"
+        v-for="(a, idx) in characters"
+        v-bind:key="a[idx]"
+      >
+        <div class="main-character__detail">
+          <div class="details">
+            <h3>Nombre:</h3>
+            <h5>{{ a.name }}</h5>
+            <h3>Género:</h3>
+            <h5>{{ a.gender }}</h5>
+            <h3>Id:</h3>
+            <h5>{{ idx + 1 }}</h5>
+          </div>
+          <div class="img">
+            <img
+              class="avatar-img"
+              v-bind:src="`https://ui-avatars.com/api/?name=${a.name}`"
+              alt=""
+            />
+          </div>
         </div>
-        <div class="img">          
-          <img class="avatar-img" v-bind:src="`https://ui-avatars.com/api/?name=${a.name}`" alt="" />
+
+        <div class="main-deatil__link">
+          <router-link
+            class="link"
+            :to="{ name: 'character', params: { id: idx + 1 } }"
+            >Detalle</router-link
+          >
         </div>
       </div>
-
-      <div class="main-deatil__link">
-        <router-link
-          class="link"
-          :to="{ name: 'character', params: { id: idx + 1 } }"
-          >Detalle</router-link
-        >
-      </div>
-    </div>
-
-  </main>
-  <div class="buttons">
-
-    <button>Anterior</button>
-    <button v-on:click="getPage()"> Siguiente </button>
-    </div> 
+    </main>
   </div>
 </template>
 
 <script>
-import api from '@/api';
+import api from "@/api";
 export default {
-  
   name: "pxCharacters",
 
-  data(){
-    return{
+  data() {
+    return {
       page: 1,
-    }
+    };
   },
 
   props: {
@@ -58,10 +55,10 @@ export default {
   },
 
   methods: {
-    getPage(pg){
-      api.getPages(pg).then(page => this.page= page);
-    }
-  }
+    getPage(pg) {
+      api.getPages(pg).then((page) => (this.page = page));
+    },
+  },
 };
 </script>
 
@@ -92,11 +89,11 @@ h5 {
 }
 .main-character__detail {
   display: flex;
-  justify-content: space-between;  
+  justify-content: space-between;
 }
-.avatar-img{
+.avatar-img {
   width: 100px;
-border-radius: 50%;
+  border-radius: 50%;
 }
 .main-deatil__link {
   padding: 8px;
@@ -116,23 +113,4 @@ border-radius: 50%;
   background-color: var(--light-green);
   color: var(--light);
 }
-
-.buttons{
-  margin:0 auto;
-  display:flex;
-  justify-content: space-between;
-  margin-top: 32px;
-  margin-bottom:64px;
-  width: 100%;
-  
-}
-
-button{
-  padding:8px 16px;
-  background-color: var(--main-black);
-  color:var(--light);
-  border:none;
-  border-radius: 8px;
-}
-
 </style>

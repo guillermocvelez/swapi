@@ -67,7 +67,7 @@ export default {
   width: 100%;
   display: grid;
   justify-content: center;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   column-gap: 16px;
   grid-template-rows: auto;
   row-gap: 16px;
@@ -112,5 +112,10 @@ h5 {
 .link:hover {
   background-color: var(--light-green);
   color: var(--light);
+}
+@media screen and (max-width: 920px){
+  .main-container{
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 </style>

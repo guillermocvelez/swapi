@@ -93,10 +93,20 @@ button {
   border: none;
   border-radius: 8px;
   cursor: pointer;
+  outline: none;  
+}
+button:hover{
+  background-color: var(--main-gray);
+  color: black;
+}
+button:active{
+  transform: scale(0.9);
+  outline: none;
 }
 
 .disabled {
   background-color: gainsboro;
   cursor: not-allowed;
 }
+
 </style>

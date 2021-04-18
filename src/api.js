@@ -1,4 +1,4 @@
-const url = "https://swapi.dev/api/people/";
+const url = "http://swapi.dev/api/people/";
 
 function getCharacters() {
   return fetch(`${url}`)
